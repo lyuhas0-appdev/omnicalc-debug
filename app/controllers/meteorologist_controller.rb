@@ -1,6 +1,6 @@
 class MeteorologistController < ApplicationController
   def street_to_weather
-    @street_address = params.fetch("address")
+    @street_address = params.fetch("street_address")
     
     maps_key = ENV.fetch("GEOCODING_API_KEY")
 
@@ -17,7 +17,7 @@ class MeteorologistController < ApplicationController
 
     @lng = location.fetch("lng").to_s
 
-    dark_sky_key = ENV.fetch("DARK_SKY_KEY")
+    dark_sky_key = ENV.fetch("DARKSKY_API_KEY")
 
     api_url = "https://api.darksky.net/forecast/"+ dark_sky_key + "/" + @lat + "," +  @lng
     
